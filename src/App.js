@@ -53,17 +53,17 @@ function App() {
 
     return (
         <div className="app-container">
-            <h1>Hospitalized Cases Forcasting</h1>
+            <h1>Hospitalized Cases Forecasting</h1>
 
             {/* File upload section */}
             <div className="upload-container">
                 <input type="file" accept=".csv,.xlsx" onChange={handleFileUpload} />
-                <button onClick={fetchPredictions}>Forcast</button>
+                <button onClick={fetchPredictions}>Forecast</button>
                 <button onClick={fetchVisualization}>Visualize</button>
             </div>
 
             {/* Predictions Table */}
-            <h2>Forcasting Table</h2>
+            <h2>Forecasting Table</h2>
             {predictions.length > 0 ? (
                 <table>
                     <thead>
@@ -74,7 +74,7 @@ function App() {
                             <th>Week</th>
                             <th>Rainsum</th>
                             <th>Mean Temperature</th>
-                            <th>Weekly Hospitalised Cases</th>
+                            <th>Weekly Hospitalized Cases</th>
                         </tr>
                     </thead>
                     <tbody>
