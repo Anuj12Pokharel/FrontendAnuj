@@ -7,6 +7,9 @@ function App() {
     const [predictions, setPredictions] = useState([]);
     const [visualization, setVisualization] = useState('');
 
+    // Define the base URL for your deployed backend
+    const API_URL = 'https://weekly-hospitalized-case.onrender.com';
+
     // Handle file upload
     const handleFileUpload = async (event) => {
         const uploadedFile = event.target.files[0];
@@ -17,7 +20,7 @@ function App() {
             formData.append('file', uploadedFile);
 
             try {
-                const response = await axios.post('http://localhost:5000/api/upload', formData, {
+                const response = await axios.post(`${API_URL}/api/upload`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
                 alert(response.data.message || 'File uploaded successfully!');
@@ -31,7 +34,7 @@ function App() {
     // Fetch predictions from backend
     const fetchPredictions = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/predict');
+            const response = await axios.get(`${API_URL}/api/predict`);
             const data = response.data;
             setPredictions(data);
         } catch (error) {
@@ -43,7 +46,7 @@ function App() {
     // Fetch visualization image from backend
     const fetchVisualization = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/visualization');
+            const response = await axios.get(`${API_URL}/api/visualization`);
             setVisualization(response.data.image);
         } catch (error) {
             alert('Error fetching visualization');
